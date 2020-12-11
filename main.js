@@ -12,7 +12,7 @@ class UI {
 
     const books = Store.getBooks();
 
-    books.forEach((book) => UI.addBookToList(book));
+    books.forEach((book, index) => UI.addBookToList(book));
   }
 
   static addBookToList(book) {
@@ -24,11 +24,15 @@ class UI {
       <td>${book.author}</td>
       <td>${book.title}</td>
       <td>${book.pages}</td>
-      <td><button class= 'btn btn-info'>${book.read}</button></td>
+      <td>
+      <a href="#"><button class='btn btn-info readStatus' onclick="change(this)" >
+        ${book.read}</button></a>
+      </td>
       <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
     `;
 
     list.appendChild(row);
+ 
   }
 
   static deleteBook(elem) {
@@ -41,11 +45,11 @@ class UI {
     const div = document.createElement('div');
     div.className = `alert alert-${className}`;
     div.appendChild(document.createTextNode(message));
-      const container = document.querySelector('.col-md-8');
-      const form = document.querySelector('#book-form');
-      container.insertBefore(div, form);
+    const container = document.querySelector('.col-md-8');
+    const form = document.querySelector('#book-form');
+    container.insertBefore(div, form);
 
-      setTimeout(() => document.querySelector('.alert').remove(), 3000);
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
   }
 
   static clearFields() {
@@ -56,7 +60,27 @@ class UI {
   }
 }
 
-// store
+// Change status
+function change(el) {
+  const parent = el.parentElement;
+  const status = parent.querySelector('.readStatus');
+  const index = el.parentElement.parentElement.rowIndex;
+  let books;
+  books = JSON.parse(localStorage.getItem('books'));
+  if (status.innerHTML !== 'Read') {
+    status.innerHTML = 'Read';
+    $('alert alert-danger').hide();
+    books[index - 1].read = 'Read';
+    localStorage.setItem('books', JSON.stringify(books));
+  } else {
+    status.innerHTML = 'Not read';
+    books[index - 1].read = 'Not read';
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+  
+}
+
+// Local Storage
 class Store {
   static getBooks() {
     let books;
@@ -106,14 +130,14 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   } else {
     const book = new Book(author, title, pages, read);
 
-  UI.addBookToList(book);
+    UI.addBookToList(book);
 
-  Store.addBook(book);
+    Store.addBook(book);
 
-  UI.showAlert('Book Added', 'success');
+    UI.showAlert('Book Added', 'success');
 
-  // Clear Fields
-  UI.clearFields();
+    // Clear Fields
+    UI.clearFields();
   }
 });
   
@@ -125,3 +149,14 @@ document.querySelector('#book-list').addEventListener('click', e => {
 
   UI.showAlert('Book Removed', 'danger');
 });
+
+
+// Hide form on page load
+window.onload = function() {
+  document.getElementById('book-form').style.display = 'none';
+};
+
+function showDiv() {
+  document.getElementById('book-form').style.display = "block";
+  document.getElementById('createBook').style.display = "none";
+}

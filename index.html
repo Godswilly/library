@@ -13,48 +13,54 @@
   <main class="container mt-4 d-flex justify-content-center">
     <div class="col-md-8">
       <h1 class="text-center">Library</h1>
-    <form id="book-form">
-      <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" id="author" class="form-control">
+
+      <div>
+        <button type="button" id="createBook" onclick="showDiv()" class="btn btn-secondary mt-4">New Book</button>
       </div>
 
-      <div class="form-group">
-        <label for="title" class="mt-3">Title</label>
-        <input type="text" id="title" class="form-control">
-      </div>
+      <form id="book-form">
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" id="author" class="form-control">
+        </div>
 
-      <div class="form-group">
-        <label for="pages" class="mt-3">Number of pages</label>
-        <input type="text" id="pages" class="form-control">
-      </div>
+        <div class="form-group">
+          <label for="title" class="mt-3">Title</label>
+          <input type="text" id="title" class="form-control">
+        </div>
 
-      <div class="form-group mt-4">
-        <label for="read">Status</label>
-        <select name="status" id="read" class="custom-select">
-          <option value="read">Read</option>
-          <option value="not read">Not read</option>
-        </select>
-      </div>
-      
-      <input type="submit" value="Add Book" class="btn btn-primary mt-4 w-100">
-    </form>
+        <div class="form-group">
+          <label for="pages" class="mt-3">Number of pages</label>
+          <input type="text" id="pages" class="form-control">
+        </div>
 
-    <table class="table table-striped mt-5">
-      <thead>
-        <tr>
-          <th>Author</th>
-          <th>Title</th>
-          <th>Number of pages</th>
-          <th>Read</th>
-          <th></th>
-        </tr>
-        <tbody id="book-list"></tbody>
-      </thead>
-    </table>
+        <div class="form-group mt-3">
+          <label for="read">Status</label>
+          <select name="status" id="read" class="custom-select form-control">
+            <option value="Read">Read</option>
+            <option value="Not read">Not read</option>
+          </select>
+        </div>
+
+        <input type="submit" value="Add Book" class="btn btn-primary mt-4 w-100">
+      </form>
+
+      <table class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Number of pages</th>
+            <th>Read</th>
+            <th></th>
+          </tr>
+          <tbody id="book-list"></tbody>
+        </thead>
+      </table>
+
     </div>
   </main>
 
-  <script src="asset/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
