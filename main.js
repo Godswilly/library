@@ -143,15 +143,15 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 // Event: Remove a book
 document.querySelector('#book-list').addEventListener('click', e => {
   deleteBook(e.target);
-
-  removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
+  const a = e.target.parentElement.previousElementSibling.previousElementSibling;
+  removeBook(a.previousElementSibling.textContent);
 
   showAlert('Book Removed', 'danger');
 });
 
 // Hide form on page load
-bookForm = document.getElementById('book-form');
-createBook = document.getElementById('createBook')
+const bookForm = document.getElementById('book-form');
+const createBook = document.getElementById('createBook');
 
 function reload() {
   bookForm.style.display = 'none';
