@@ -24,7 +24,7 @@ To get a local copy of the repository please run the following commands on your 
 - Open the index.html file using your browser
 
 ## Live version
-https://rawcdn.githack.com/Godswilly/library/ae3a2e89b81f1dcf608a18e51936a6ad32ddfec4/index.html
+<a href="https://rawcdn.githack.com/Godswilly/library/ae3a2e89b81f1dcf608a18e51936a6ad32ddfec4/index.html">Click here</a>
 
 ## Authors
 - Okikiola Apelehin
