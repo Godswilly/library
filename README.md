@@ -23,8 +23,8 @@ To get a local copy of the repository please run the following commands on your 
 - git clone <a href="https://github.com/Godswilly/library.git">https://github.com/Godswilly/library</a>
 - Open the index.html file using your browser
 
-# Live version
-
+## Live version
+https://rawcdn.githack.com/Godswilly/library/ae3a2e89b81f1dcf608a18e51936a6ad32ddfec4/index.html
 
 ## Authors
 - Okikiola Apelehin
