@@ -150,15 +150,16 @@ document.querySelector('#book-list').addEventListener('click', e => {
 });
 
 // Hide form on page load
-function reload(e) {
-  e.preventDefault();
+bookForm = document.getElementById('book-form');
+createBook = document.getElementById('createBook')
 
-  document.getElementById('book-form').style.display = 'none';
+function reload() {
+  bookForm.style.display = 'none';
 }
 window.onload = reload();
 
 function showDiv() {
-  document.getElementById('book-form').style.display = 'block';
-  document.getElementById('createBook').style.display = 'none';
+  bookForm.style.display = 'block';
+  createBook.style.display = 'none';
 }
-window.onload = showDiv;
+createBook.onclick = showDiv;
